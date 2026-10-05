@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>kiryana store - Supermarket</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/store.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">🛒 kiryana store</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="login.html">Login</a>
+        <a href="admin-dashboard.html">Admin Dashboard</a>
+        <a href="qr-review.html">QR Rating</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <div class="search-bar-row">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search 1000+ items (Sugar, Atta, Bread)..." oninput="loadCatalog()">
+      <select id="categoryFilter" class="filter-select" onchange="loadCatalog()">
+        <option value="">All Categories</option>
+        <option value="Grains & Staples">Grains & Staples</option>
+        <option value="Daily Fresh">Daily Fresh (7-Day Expiry)</option>
+        <option value="Snacks">Snacks & Biscuits</option>
+      </select>
+    </div>
+    <div id="productGrid" class="products-grid"></div>
+  </main>
+  <footer><p>© 2025 kiryana store Automation</p></footer>
+  <script src="../js/store.js"></script>
+</body>
+</html>

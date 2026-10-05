@@ -1,0 +1,58 @@
+﻿version: '3.8'
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: kiryana_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-kiryana_store_db}
+      POSTGRES_USER: ${POSTGRES_USER:-kiryana_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-KiryanaSecure2025}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - kiryana-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kiryana_backend
+    restart: always
+    environment:
+      PORT: 5000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-kiryana_store_db}
+      DB_USER: ${POSTGRES_USER:-kiryana_admin}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-KiryanaSecure2025}
+      STORE_OWNER_PHONE: ${STORE_OWNER_PHONE:-919876543210}
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - kiryana-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kiryana_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - kiryana-network
+
+volumes:
+  pgdata:
+
+networks:
+  kiryana-network:
+    driver: bridge

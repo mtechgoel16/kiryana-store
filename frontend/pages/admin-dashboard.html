@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Admin Dashboard - kiryana store</title><link rel="stylesheet" href="../css/main.css"><link rel="stylesheet" href="../css/admin.css"></head>
+<body>
+  <header><div class="nav-container"><a href="admin-dashboard.html" class="logo">📊 Kiryana Admin Dashboard</a><nav class="nav-links"><a href="index.html">View Store</a></nav></div></header>
+  <main class="container">
+    <div class="kpi-row">
+      <div class="kpi-card alert-yellow"><h4>Expiring (30-45 Days)</h4><div class="number" id="kpiExpiring">1 Batches</div></div>
+      <div class="kpi-card alert-red"><h4>Low-Stock Alerts</h4><div class="number" id="kpiLowStock">1 Items</div></div>
+    </div>
+    <div class="admin-table-container">
+      <h3>🥛 7-Day High Perishables Category (Bread, Milk, Paneer)</h3>
+      <table id="perishablesTable"><thead><tr><th>Item Name</th><th>Batch</th><th>Stock Left</th><th>Expiry Date</th><th>Status</th></tr></thead><tbody><tr><td>Harvest Gold White Bread</td><td>BRD-WEEK11</td><td>14 packet</td><td>In 3 Days</td><td>Quick Sale Needed</td></tr></tbody></table>
+    </div>
+    <div class="admin-table-container">
+      <h3>⚠️ 30-45 Days Expiry Alert (Deal of Day / Return)</h3>
+      <table id="nearExpiryTable"><thead><tr><th>Item Name</th><th>Batch</th><th>Stock</th><th>Expiry</th></tr></thead><tbody><tr><td>Parle-G Glucose Biscuit</td><td>PG-DEC24</td><td>45 packet</td><td>In 35 Days</td></tr></tbody></table>
+    </div>
+    <div class="admin-table-container">
+      <h3>📦 1-Year Old Aging Stock</h3>
+      <table id="deadStockTable"><thead><tr><th>Item Name</th><th>Category</th><th>Stock</th><th>Inward Date</th></tr></thead><tbody><tr><td>Kolam Raw Rice (Loose)</td><td>Grains & Staples</td><td>190 kg</td><td>Over 400 Days Ago</td></tr></tbody></table>
+    </div>
+  </main>
+</body>
+</html>
